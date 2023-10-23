@@ -1,5 +1,4 @@
 import * as ts from 'typescript';
-import { readTsSourceFile } from '@nxext/core';
 import {
   applyChangesToString,
   ChangeType,
@@ -7,6 +6,7 @@ import {
   Tree,
 } from '@nx/devkit';
 import { findNodes } from 'nx/src/utils/typescript';
+import { readTsSourceFile } from '../../utils/ast-utils';
 
 function addCodeIntoArray(
   source: ts.SourceFile,
@@ -48,9 +48,8 @@ function addCodeIntoArray(
       // Get the indentation of the last element, if any.
       const text = node.getFullText(source);
       if (text.match('^\r?\r?\n')) {
-        toInsert2 = `,${
-          text.match(/^\r?\n\s+/)[0]
-        }${identifier}: [${toInsert}]`;
+        toInsert2 = `,${text.match(/^\r?\n\s+/)[0]
+          }${identifier}: [${toInsert}]`;
       } else {
         toInsert2 = `, ${identifier}: [${toInsert}]`;
       }

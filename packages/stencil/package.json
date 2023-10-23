@@ -34,8 +34,7 @@
     "typescript": "5.1.6",
     "@nx/workspace": "^16.9.1",
     "@nx/angular": "^16.9.1",
-    "nx": "^16.9.1",
-    "@nxext/core": "^16.7.0"
+    "nx": "^16.9.1"
   },
   "peerDependencies": {
     "@nxext/svelte": "^16.7.0",

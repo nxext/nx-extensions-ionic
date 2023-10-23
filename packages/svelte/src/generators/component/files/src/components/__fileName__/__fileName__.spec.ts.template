@@ -1,8 +1,0 @@
-import <%= className %> from './<%= className %>.svelte'
-import { render } from '@testing-library/svelte'
-
-it('it works', async () => {
-  const { getByText } = render(<%= className %>)
-
-  expect(getByText('Hello component!'));
-})

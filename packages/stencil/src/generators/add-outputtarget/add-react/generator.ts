@@ -16,9 +16,9 @@ import { STENCIL_OUTPUTTARGET_VERSION } from '../../../utils/versions';
 import { addToGitignore } from '../../../utils/utillities';
 import * as ts from 'typescript';
 import { getDistDir, getRelativePath } from '../../../utils/fileutils';
-import { addImport } from '@nxext/core';
 import { addOutputTarget } from '../../../stencil-core-utils';
 import { calculateStencilSourceOptions } from '../lib/calculate-stencil-source-options';
+import { addImport } from '../../..//utils/ast-utils';
 
 async function prepareReactLibrary(
   host: Tree,

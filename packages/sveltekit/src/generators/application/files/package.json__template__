@@ -1,8 +1,0 @@
-{
-	"name": "<%= fileName %>",
-	"version": "0.0.1",
-  "type": "module",
-  "devDependencies": {
-    "svelte": "<%= offsetFromRoot %>node_modules/svelte"
-  }
-}
