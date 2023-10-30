@@ -1,5 +1,5 @@
 import { Tree, ensurePackage, NX_VERSION } from '@nx/devkit';
-import { Linter } from '@nx/linter';
+import { Linter } from '@nx/eslint';
 import { ApplicationGeneratorSchema } from '../schema';
 
 export async function addReact(

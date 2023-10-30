@@ -1,5 +1,5 @@
 import { ensurePackage, NX_VERSION, Tree } from '@nx/devkit';
-import { Linter } from '@nx/linter';
+import { Linter } from '@nx/eslint';
 import { ApplicationGeneratorSchema } from '../schema';
 
 export async function addAngular(
