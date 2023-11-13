@@ -8,7 +8,6 @@ Also, before committing, it's always a good idea to run:
 `pnpm nx affected:lint`
 `pnpm nx affected:test`
 
-
 ## Project Structure
 
 This project uses the Nx CLI with pnpm.
