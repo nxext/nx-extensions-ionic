@@ -60,8 +60,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/capacitor"],
       "options": {
-        "jestConfig": "packages/capacitor/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/capacitor/jest.config.ts"
       }
     },
     "publish": {
