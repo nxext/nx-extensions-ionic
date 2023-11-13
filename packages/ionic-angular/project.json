@@ -55,8 +55,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/ionic-angular"],
       "options": {
-        "jestConfig": "packages/ionic-angular/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/ionic-angular/jest.config.ts"
       }
     },
     "publish": {
