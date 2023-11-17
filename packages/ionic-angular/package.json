@@ -28,12 +28,12 @@
     "tslib": "^2.3.0",
     "@nxext/capacitor": "^16.7.0",
     "@phenomnomnominal/tsquery": "~5.0.1",
-    "@nx/devkit": "17.1.1",
+    "@nx/devkit": "17.1.2",
     "typescript": "5.2.2",
-    "@nx/js": "17.1.1"
+    "@nx/js": "17.1.2"
   },
   "peerDependencies": {
-    "@nx/angular": "17.1.1",
-    "@nx/eslint": "17.1.1"
+    "@nx/angular": "17.1.2",
+    "@nx/eslint": "17.1.2"
   }
 }
