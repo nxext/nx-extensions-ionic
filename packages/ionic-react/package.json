@@ -31,8 +31,8 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "@nx/react": "17.1.2",
+    "@nx/react": "^17.1.2",
     "@phenomnomnominal/tsquery": "~5.0.1",
-    "@nx/eslint": "17.1.2"
+    "@nx/eslint": "^17.1.2"
   }
 }

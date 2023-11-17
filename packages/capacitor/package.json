@@ -25,7 +25,7 @@
     "tslib": "^2.3.0",
     "ignore": "^5.2.4",
     "@nx/devkit": "^17.1.2",
-    "nx": "17.1.2"
+    "nx": "^17.1.2"
   },
   "peerDependencies": {
     "@nx/web": "17.1.2"
