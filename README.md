@@ -10,7 +10,7 @@ If you use the e.g. 16.2 package of any package, be sure to use the Nx version 1
 
 ## Install and usage
 
-Docs are here: https://nxext.dev
+Docs are here: https://nxext.github.io/nx-extensions-ionic/
 
 ## Contributing
 
