@@ -36,6 +36,6 @@ export async function normalizeOptions(
     prefix: npmScope,
     appProjectName,
     appProjectRoot,
-    standalone: false,
+    standalone: options.standalone,
   };
 }

@@ -19,5 +19,6 @@ export async function addAngular(
     e2eTestRunner: options.e2eTestRunner,
     standalone: options.standalone,
     minimal: true,
+    bundler: 'webpack',
   });
 }

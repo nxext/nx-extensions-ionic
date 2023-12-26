@@ -122,5 +122,10 @@
     ]
   },
   "nxCloudAccessToken": "NTlhMGE3ZTYtYjk5OC00Mzc5LWE2ZTAtNzE4ODEzNDY5MjlmfHJlYWQ=",
-  "parallel": 1
+  "parallel": 1,
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
+  }
 }
