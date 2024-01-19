@@ -4,8 +4,8 @@
 
 An Nx plugin for developing [Ionic](https://ionicframework.com/docs) Angular applications and libraries.
 
-For more complete documentation, visit [nxext.dev](https://nxext.dev/docs/ionic-angular/overview.html).
+For more complete documentation, visit [nxext.github.io](https://nxext.github.io/nx-extensions-ionic/docs/ionic-angular/overview.html).
 
 ## Usage
 
-Visit the official [Getting Started](https://nxext.dev/docs/ionic-angular/getting-started.html) documentation.
+Visit the official [Getting Started](https://nxext.github.io/nx-extensions-ionic/docs/ionic-angular/getting-started.html) documentation.

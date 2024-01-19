@@ -4,7 +4,7 @@
 
 An Nx plugin for developing [Ionic](https://ionicframework.com/docs) React applications and libraries.
 
-For more complete documentation, visit [nxext.dev](https://nxext.dev/docs/ionic-react/overview).
+For more complete documentation, visit [nxext.github.io](https://nxext.github.io/nx-extensions-ionic/docs/ionic-react/overview.html).
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ For more complete documentation, visit [nxext.dev](https://nxext.dev/docs/ionic-
 
 ## Usage
 
-Visit the official [Getting Started](https://nxext.dev/docs/ionic-react/getting-started) documentation.
+Visit the official [Getting Started](https://nxext.github.io/nx-extensions-ionic/docs/ionic-react/getting-started.html) documentation.
 
 ## Maintainers
 

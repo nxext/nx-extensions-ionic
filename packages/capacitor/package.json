@@ -6,10 +6,10 @@
     "name": "Devin Shoemaker",
     "email": "devinshoe@gmail.com"
   },
-  "homepage": "https://nxext.dev/docs/capacitor/getting-started.html",
+  "homepage": "https://nxext.github.io/nx-extensions-ionic/docs/capacitor/getting-started.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nxext/nx-extensions",
+    "url": "https://github.com/nxext/nx-extensions-ionic",
     "directory": "packages/capacitor"
   },
   "license": "MIT",
