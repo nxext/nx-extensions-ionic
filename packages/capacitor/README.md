@@ -1,11 +1,5 @@
-# capacitor
+# @nxext/capacitor
 
-This library was generated with [Nx](https://nx.dev).
+An Nx plugin for developing [Capacitor](https://capacitorjs.com/) applications.
 
-## Building
-
-Run `nx build capacitor` to build the library.
-
-## Running unit tests
-
-Run `nx test capacitor` to execute the unit tests via [Jest](https://jestjs.io).
+Documentation is available [here](https://nxext.github.io/nx-extensions-ionic/docs/capacitor/overview.html).

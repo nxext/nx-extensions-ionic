@@ -10,7 +10,7 @@ If you use the e.g. 16.2 package of any package, be sure to use the Nx version 1
 
 ## Install and usage
 
-Docs are here: https://nxext.github.io/nx-extensions-ionic/
+Documentation is available [here](https://nxext.github.io/nx-extensions-ionic/docs/nxext/overview.html).
 
 ## Contributing
 
@@ -18,7 +18,7 @@ PRs, ideas and discussions accepted. Take a look at [the contributing file](CONT
 
 ## License
 
-MIT © 2020 - 2022 Nxext Team
+MIT © 2020 - 2024 Nxext Team
 
 ## Contributors ✨
 
