@@ -29,7 +29,7 @@ const baseName = basename(tmpProjPath());
 
 logger.info('Creating nx workspace...');
 execSync(
-  `pnpx create-nx-workspace --preset=empty --name=${baseName} --skipGit=true --packageManager=pnpm --nxCloud=false`,
+  `pnpx create-nx-workspace --preset=apps --name=${baseName} --skipGit=true --packageManager=pnpm --nxCloud=false`,
   {
     cwd: localTmpDir,
   }
@@ -54,9 +54,9 @@ logger.info(`All packages processed.`);
 
 logger.info('Update versions...');
 const tsConfigBase = readJsonFile(`${workspaceRoot}/tsconfig.base.json`);
-const distPaths = Object.entries(tsConfigBase.compilerOptions.paths).reduce<
-  Record<string, string>
->((acc, cur) => {
+const distPaths = Object.entries<string>(
+  tsConfigBase.compilerOptions.paths
+).reduce<Record<string, string>>((acc, cur) => {
   acc[cur[0]] = `file:${workspaceRoot}/dist/${cur[1][0].split('/src')[0]}`;
 
   return acc;

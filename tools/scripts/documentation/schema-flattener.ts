@@ -2,7 +2,7 @@
  * Originally from the Nx repo: https://github.com/nrwl/nx
  */
 import { deepCopy, json, schema } from '@angular-devkit/core';
-import { visitJsonSchema } from '@angular-devkit/core/src/json/schema';
+import { visitJsonSchema } from '@angular-devkit/core/src/json/schema/index';
 import * as Ajv from 'ajv';
 import * as Url from 'url';
 
