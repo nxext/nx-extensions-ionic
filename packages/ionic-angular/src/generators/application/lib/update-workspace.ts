@@ -27,6 +27,42 @@ export function updateWorkspace(host: Tree, options: NormalizedSchema) {
         `${options.appProjectRoot}/src/theme/variables.scss`
       ),
     },
+    {
+      input: normalizePath('node_modules/@ionic/angular/css/core.css'),
+    },
+    {
+      input: normalizePath('node_modules/@ionic/angular/css/normalize.css'),
+    },
+    {
+      input: normalizePath('node_modules/@ionic/angular/css/structure.css'),
+    },
+    {
+      input: normalizePath('node_modules/@ionic/angular/css/typography.css'),
+    },
+    {
+      input: normalizePath('node_modules/@ionic/angular/css/display.css'),
+    },
+    {
+      input: normalizePath('node_modules/@ionic/angular/css/padding.css'),
+    },
+    {
+      input: normalizePath(
+        'node_modules/@ionic/angular/css/float-elements.css'
+      ),
+    },
+    {
+      input: normalizePath(
+        'node_modules/@ionic/angular/css/text-alignment.css'
+      ),
+    },
+    {
+      input: normalizePath(
+        'node_modules/@ionic/angular/css/text-transformation.css'
+      ),
+    },
+    {
+      input: normalizePath('node_modules/@ionic/angular/css/flex-utils.css'),
+    },
   ];
 
   updateProjectConfiguration(host, options.appProjectName, project);

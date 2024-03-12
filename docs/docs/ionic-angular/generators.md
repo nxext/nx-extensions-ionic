@@ -68,6 +68,14 @@ Type: `boolean`
 
 Skip formatting files.
 
+#### standalone
+
+Default: `false`
+
+Type: `boolean`
+
+Create a standalone application.
+
 #### tags
 
 Type: `string`

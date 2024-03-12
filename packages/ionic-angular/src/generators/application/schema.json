@@ -71,6 +71,11 @@
       "description": "Skip formatting files.",
       "type": "boolean",
       "default": false
+    },
+    "standalone": {
+      "description": "Create a standalone application.",
+      "type": "boolean",
+      "default": false
     }
   },
   "required": ["name"]

@@ -12,7 +12,7 @@ function addBaseFiles(host: Tree, options: NormalizedSchema) {
     ...options,
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.appProjectRoot),
-    template: '',
+    template: options.standalone ? '-standalone' : '',
   };
 
   const filesDir = options.standalone
@@ -27,7 +27,7 @@ function addTemplateFiles(host: Tree, options: NormalizedSchema) {
     ...options,
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.appProjectRoot),
-    template: '',
+    template: options.standalone ? '-standalone' : '',
   };
 
   const filesDir = options.standalone
@@ -48,4 +48,8 @@ export function addFiles(host: Tree, options: NormalizedSchema) {
 
 export function removeFiles(host: Tree, options: NormalizedSchema) {
   host.delete(`${options.appProjectRoot}/src/favicon.ico`);
+  if (options.standalone) {
+    host.delete(`${options.appProjectRoot}/src/app/app.component.html`);
+    host.delete(`${options.appProjectRoot}/src/app/app.component.scss`);
+  }
 }
