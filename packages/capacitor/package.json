@@ -24,10 +24,10 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "ignore": "^5.2.4",
-    "@nx/devkit": "18.0.4",
-    "nx": "18.0.4"
+    "@nx/devkit": "18.2.4",
+    "nx": "18.2.4"
   },
   "peerDependencies": {
-    "@nx/web": "18.0.4"
+    "@nx/web": "18.2.4"
   }
 }
