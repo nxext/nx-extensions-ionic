@@ -12,9 +12,6 @@
       }
     }
   },
-  "affected": {
-    "defaultBase": "main"
-  },
   "generators": {
     "@nx/next": {
       "application": {
@@ -127,5 +124,6 @@
     "@nx/js": {
       "analyzeSourceFiles": true
     }
-  }
+  },
+  "defaultBase": "main"
 }
