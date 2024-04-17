@@ -11,7 +11,8 @@ export async function addAngular(
   return await applicationGenerator(host, {
     ...options,
     name: options.name,
-    skipFormat: options.skipFormat,
+    directory: options.directory,
+    skipFormat: true,
     routing: true,
     style: 'scss',
     linter: Linter.EsLint,
