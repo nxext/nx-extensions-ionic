@@ -25,14 +25,13 @@
   "schematics": "./generators.json",
   "builders": "./executors.json",
   "dependencies": {
-    "tslib": "^2.3.0",
     "@nxext/capacitor": "^18.0.4",
-    "@nx/devkit": "18.2.4",
-    "typescript": "5.4.5"
-  },
-  "peerDependencies": {
-    "@nx/react": "18.2.4",
+    "@nx/devkit": "18.3.1",
+    "@nx/eslint": "18.3.1",
+    "@nx/react": "18.3.1",
+    "typescript": "5.4.5",
     "@phenomnomnominal/tsquery": "~5.0.1",
-    "@nx/eslint": "18.2.4"
-  }
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {}
 }
