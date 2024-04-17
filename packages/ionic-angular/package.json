@@ -1,10 +1,10 @@
 {
   "name": "@nxext/ionic-angular",
-  "version": "18.0.4",
+  "version": "18.0.0",
   "description": "An Nx plugin for developing Ionic React applications and libraries",
   "author": {
-    "name": "Devin Shoemaker",
-    "email": "devinshoe@gmail.com"
+    "name": "Dominik Pieper",
+    "email": "dominik@pieper.io"
   },
   "homepage": "https://nxext.github.io/nx-extensions-ionic/docs/ionic-angular/overview.html",
   "repository": {
@@ -25,7 +25,7 @@
   "schematics": "./generators.json",
   "builders": "./executors.json",
   "dependencies": {
-    "@nxext/capacitor": "^18.0.4",
+    "@nxext/capacitor": "18.0.0",
     "@nx/devkit": "18.3.1",
     "@nx/eslint": "18.3.1",
     "@nx/angular": "18.3.1",
@@ -34,5 +34,8 @@
     "typescript": "5.4.5",
     "tslib": "^2.3.0"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "@nx/angular": "^18.3.0",
+    "@nx/eslint": "^18.3.0"
+  }
 }

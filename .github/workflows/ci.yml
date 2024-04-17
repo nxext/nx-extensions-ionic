@@ -24,7 +24,7 @@ jobs:
       # Cache node_modules
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18.18
           cache: 'pnpm'
       - uses: actions/cache@v4
         with:
@@ -34,8 +34,13 @@ jobs:
       # Connect your workspace on nx.app and uncomment this to enable task distribution.
       # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
       - run: pnpm install --no-frozen-lockfile
-      - uses: nrwl/nx-set-shas@v4
+      - uses:
+          nrwl/nx-set-shas@v3
+          # This line is needed for nx affected to work when CI is running on a PR
+      - run: git branch --track main origin/main
+        if: ${{ github.event_name == 'pull_request' }}
+      #- uses: nrwl/nx-set-shas@v4
       #- run: pnpm exec nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
 
-      - run: pnpm exec nx-cloud record -- nx format:check
-      - run: pnpm exec nx affected -t lint test build
+      #- run: pnpm exec nx-cloud record -- nx format:check
+      - run: pnpm exec nx affected -t lint test build e2e

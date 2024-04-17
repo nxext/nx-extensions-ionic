@@ -5,6 +5,7 @@ import {
   webVitalsVersion,
   workboxVersion,
   capacitorPluginVersion,
+  ioniconsVersion,
 } from '../../../utils/versions';
 
 export function addDependencies(host: Tree) {
@@ -14,9 +15,12 @@ export function addDependencies(host: Tree) {
       '@ionic/react': ionicReactVersion,
       '@ionic/react-router': ionicReactRouterVersion,
       'web-vitals': webVitalsVersion,
+      ionicons: ioniconsVersion,
+      '@capacitor/app': capacitorPluginVersion,
       '@capacitor/haptics': capacitorPluginVersion,
       '@capacitor/keyboard': capacitorPluginVersion,
       '@capacitor/status-bar': capacitorPluginVersion,
+      '@capacitor/core': capacitorPluginVersion,
       'workbox-background-sync': workboxVersion,
       'workbox-broadcast-update': workboxVersion,
       'workbox-cacheable-response': workboxVersion,

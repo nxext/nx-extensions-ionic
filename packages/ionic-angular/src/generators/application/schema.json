@@ -75,7 +75,7 @@
     "standalone": {
       "description": "Create a standalone application.",
       "type": "boolean",
-      "default": false
+      "default": true
     }
   },
   "required": ["name"]

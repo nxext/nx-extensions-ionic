@@ -70,7 +70,7 @@ Skip formatting files.
 
 #### standalone
 
-Default: `false`
+Default: `true`
 
 Type: `boolean`
 

@@ -6,8 +6,7 @@ export async function addReact(
   host: Tree,
   options: ApplicationGeneratorSchema
 ) {
-  ensurePackage('@nx/react', NX_VERSION);
-  const { applicationGenerator } = await import('@nx/react');
+  const { applicationGenerator } = ensurePackage('@nx/react', NX_VERSION);
   return await applicationGenerator(host, {
     ...options,
     name: options.name,

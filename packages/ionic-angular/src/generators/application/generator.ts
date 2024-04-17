@@ -1,9 +1,4 @@
-import {
-  convertNxGenerator,
-  formatFiles,
-  runTasksInSerial,
-  Tree,
-} from '@nx/devkit';
+import { formatFiles, runTasksInSerial, Tree } from '@nx/devkit';
 import { addAngular } from './lib/add-angular';
 import { addCapacitor } from './lib/add-capacitor';
 import { addDependencies } from './lib/add-dependencies';
@@ -36,4 +31,3 @@ export async function applicationGenerator(
 }
 
 export default applicationGenerator;
-export const applicationSchematic = convertNxGenerator(applicationGenerator);

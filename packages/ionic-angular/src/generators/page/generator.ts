@@ -63,4 +63,3 @@ export async function pageGenerator(tree: Tree, options: PageGeneratorSchema) {
 }
 
 export default pageGenerator;
-export const pageSchematic = convertNxGenerator(pageGenerator);

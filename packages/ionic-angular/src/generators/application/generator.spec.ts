@@ -1,31 +1,33 @@
-import { readJson, readProjectConfiguration, Tree } from '@nx/devkit';
+import { readJson, readProjectConfiguration } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { applicationGenerator } from './generator';
 import { ApplicationGeneratorSchema } from './schema';
+import { UnitTestRunner, E2eTestRunner } from '@nx/angular/generators';
+import { GeneratorTemplate } from './lib/templates.type';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const devkit = require('@nx/devkit');
-
-xdescribe('application schematic', () => {
-  jest.spyOn(devkit, 'ensurePackage').mockReturnValue(Promise.resolve());
-
-  let host: Tree;
-  const options: ApplicationGeneratorSchema = {
-    name: 'my-app',
-    template: 'blank',
-    unitTestRunner: 'jest',
-    e2eTestRunner: 'cypress',
-    capacitor: false,
-    skipFormat: false,
+describe('application schematic', () => {
+  const setup = async () => {
+    const host = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
+    host.write('.gitignore', '');
+    const schema: ApplicationGeneratorSchema = {
+      name: 'my-app',
+      template: GeneratorTemplate.Blank,
+      unitTestRunner: UnitTestRunner.None,
+      e2eTestRunner: E2eTestRunner.None,
+      capacitor: false,
+      skipFormat: false,
+    };
+    const projectRoot = `apps/${schema.name}`;
+    return {
+      host,
+      schema,
+      projectRoot,
+    };
   };
-  const projectRoot = `apps/${options.name}`;
-
-  beforeEach(() => {
-    host = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
-  });
 
   it('should add dependencies to package.json', async () => {
-    await applicationGenerator(host, options);
+    const { host, schema } = await setup();
+    await applicationGenerator(host, schema);
 
     const packageJson = readJson(host, 'package.json');
     expect(packageJson.dependencies['@ionic/angular']).toBeDefined();
@@ -33,8 +35,10 @@ xdescribe('application schematic', () => {
   });
 
   it('should update assets in project configuration', async () => {
-    await applicationGenerator(host, options);
-    const project = readProjectConfiguration(host, options.name);
+    const { host, schema, projectRoot } = await setup();
+
+    await applicationGenerator(host, schema);
+    const project = readProjectConfiguration(host, schema.name);
 
     const assets = project.targets.build.options.assets;
     const styles = project.targets.build.options.styles;
@@ -59,12 +63,10 @@ xdescribe('application schematic', () => {
 
   describe('--linter', () => {
     it('should update .eslintrc.json', async () => {
-      await applicationGenerator(host, options);
+      const { host, schema } = await setup();
+      await applicationGenerator(host, schema);
 
-      const eslintrcJson = readJson(
-        host,
-        `apps/${options.name}/.eslintrc.json`
-      );
+      const eslintrcJson = readJson(host, `apps/${schema.name}/.eslintrc.json`);
       const tsOverride = eslintrcJson.overrides.find(
         (override: { files: string | string[] }) =>
           override.files.includes('*.ts')
@@ -89,7 +91,8 @@ xdescribe('application schematic', () => {
 
   describe('--template', () => {
     it('should add base template files', async () => {
-      await applicationGenerator(host, options);
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, schema);
 
       expect(host.exists(`${projectRoot}/ionic.config.json`)).toBeTruthy();
 
@@ -107,7 +110,8 @@ xdescribe('application schematic', () => {
     });
 
     it('--blank', async () => {
-      await applicationGenerator(host, { ...options, template: 'blank' });
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, { ...schema, template: 'blank' });
 
       expect(
         host.exists(`${projectRoot}/src/app/home/home.module.ts`)
@@ -115,7 +119,8 @@ xdescribe('application schematic', () => {
     });
 
     it('--list', async () => {
-      await applicationGenerator(host, { ...options, template: 'list' });
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, { ...schema, template: 'list' });
 
       expect(
         host.exists(
@@ -125,7 +130,8 @@ xdescribe('application schematic', () => {
     });
 
     it('--sidemenu', async () => {
-      await applicationGenerator(host, { ...options, template: 'sidemenu' });
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, { ...schema, template: 'sidemenu' });
 
       expect(
         host.exists(`${projectRoot}/src/app/folder/folder.module.ts`)
@@ -133,7 +139,8 @@ xdescribe('application schematic', () => {
     });
 
     it('--tabs', async () => {
-      await applicationGenerator(host, { ...options, template: 'tabs' });
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, { ...schema, template: 'tabs' });
 
       expect(
         host.exists(`${projectRoot}/src/app/tabs/tabs.module.ts`)
@@ -143,11 +150,12 @@ xdescribe('application schematic', () => {
 
   describe('--directory', () => {
     it('should update workspace.json', async () => {
-      await applicationGenerator(host, { ...options, directory: 'myDir' });
-      const project = readProjectConfiguration(host, `my-dir-${options.name}`);
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, { ...schema, directory: 'myDir' });
+      const project = readProjectConfiguration(host, `my-dir-${schema.name}`);
       const projectE2e = readProjectConfiguration(
         host,
-        `my-dir-${options.name}-e2e`
+        `my-dir-${schema.name}-e2e`
       );
 
       expect(project.root).toEqual('apps/my-dir/my-app');
@@ -155,14 +163,16 @@ xdescribe('application schematic', () => {
     });
 
     it('should generate files', async () => {
-      await applicationGenerator(host, { ...options, directory: 'myDir' });
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, { ...schema, directory: 'myDir' });
 
       expect(host.exists('apps/my-dir/my-app/src/main.ts'));
     });
 
     it('should generate Capacitor project', async () => {
+      const { host, schema, projectRoot } = await setup();
       await applicationGenerator(host, {
-        ...options,
+        ...schema,
         directory: 'my-dir',
         capacitor: true,
       });
@@ -175,8 +185,9 @@ xdescribe('application schematic', () => {
 
   describe('--unitTestRunner', () => {
     it('none', async () => {
+      const { host, schema, projectRoot } = await setup();
       await applicationGenerator(host, {
-        ...options,
+        ...schema,
         unitTestRunner: 'none',
       });
 
@@ -187,8 +198,9 @@ xdescribe('application schematic', () => {
     });
 
     it('jest', async () => {
+      const { host, schema, projectRoot } = await setup();
       await applicationGenerator(host, {
-        ...options,
+        ...schema,
         unitTestRunner: 'jest',
       });
 
@@ -198,9 +210,10 @@ xdescribe('application schematic', () => {
 
   describe('--tags', () => {
     it('should update nx.json', async () => {
-      await applicationGenerator(host, { ...options, tags: 'one,two' });
+      const { host, schema, projectRoot } = await setup();
+      await applicationGenerator(host, { ...schema, tags: 'one,two' });
 
-      const projectConfiguration = readProjectConfiguration(host, options.name);
+      const projectConfiguration = readProjectConfiguration(host, schema.name);
       expect(projectConfiguration.tags).toEqual(['one', 'two']);
     });
   });
@@ -208,7 +221,8 @@ xdescribe('application schematic', () => {
   describe('--capacitor', () => {
     describe('true', () => {
       it('should generate Capacitor project', async () => {
-        await applicationGenerator(host, { ...options, capacitor: true });
+        const { host, schema, projectRoot } = await setup();
+        await applicationGenerator(host, { ...schema, capacitor: true });
 
         expect(host.exists(`${projectRoot}/capacitor.config.ts`)).toBeDefined();
       });
