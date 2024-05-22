@@ -4,7 +4,7 @@ import { addIcons } from 'ionicons';
 import { triangle, ellipse, square } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tabs',
+  selector: '<%= prefix %>-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
   standalone: true,
