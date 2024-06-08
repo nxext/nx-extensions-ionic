@@ -7,15 +7,20 @@ import {
 } from 'fs-extra';
 import { getPublishableLibNames, tmpProjPath } from './utils';
 import { dirname, basename } from 'path';
-import { logger, readJsonFile, workspaceRoot } from '@nx/devkit';
-import { Workspaces } from 'nx/src/config/workspaces';
+import {
+  logger,
+  readCachedProjectGraph,
+  readJsonFile,
+  readProjectsConfigurationFromProjectGraph,
+  workspaceRoot,
+} from '@nx/devkit';
 import * as glob from 'glob';
 
 console.log('\nCreating playground. This may take a few minutes.');
 
-const workspaceJson = new Workspaces(
-  workspaceRoot
-).readWorkspaceConfiguration();
+const workspaceJson = readProjectsConfigurationFromProjectGraph(
+  readCachedProjectGraph()
+);
 const publishableLibNames = getPublishableLibNames(workspaceJson);
 
 execSync(`npx nx run-many --target build --projects ${publishableLibNames}`);
@@ -29,9 +34,11 @@ const baseName = basename(tmpProjPath());
 
 logger.info('Creating nx workspace...');
 execSync(
-  `pnpx create-nx-workspace --preset=apps --name=${baseName} --skipGit=true --packageManager=pnpm --nxCloud=false`,
+  `npx --yes create-nx-workspace@latest ${baseName} --preset ts --nxCloud skip --no-interactive`,
   {
     cwd: localTmpDir,
+    stdio: 'inherit',
+    env: process.env,
   }
 );
 logger.info('Nx workspace created!');

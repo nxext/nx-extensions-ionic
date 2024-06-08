@@ -11,9 +11,11 @@ export function addDependencies(host: Tree) {
     {
       '@ionic/angular': ionicAngularVersion,
       ionicons: ioniconsVersion,
+      '@capacitor/app': capacitorPluginVersion,
       '@capacitor/haptics': capacitorPluginVersion,
       '@capacitor/keyboard': capacitorPluginVersion,
       '@capacitor/status-bar': capacitorPluginVersion,
+      '@capacitor/core': capacitorPluginVersion,
     },
     {}
   );

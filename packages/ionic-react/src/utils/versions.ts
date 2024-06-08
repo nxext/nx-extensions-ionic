@@ -5,3 +5,4 @@ export const workboxVersion = '^5.1.4';
 export const reactRouterDomVersion = '5.3.3';
 export const typesReactRouterDomVersion = '5.3.3';
 export const capacitorPluginVersion = '5.0.2';
+export const ioniconsVersion = '^7.2.1';

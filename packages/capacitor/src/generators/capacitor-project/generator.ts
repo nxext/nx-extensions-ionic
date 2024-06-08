@@ -26,6 +26,3 @@ export async function capacitorProjectGenerator(
 }
 
 export default capacitorProjectGenerator;
-export const capacitorProjectSchematic = convertNxGenerator(
-  capacitorProjectGenerator
-);

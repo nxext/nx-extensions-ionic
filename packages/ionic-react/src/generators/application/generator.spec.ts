@@ -4,20 +4,30 @@ import { applicationGenerator } from './generator';
 import { ApplicationGeneratorSchema } from './schema';
 
 describe('application', () => {
-  let host: Tree;
+  const setup = async () => {
+    const host = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
+    const options: ApplicationGeneratorSchema = {
+      name: 'my-app',
+      unitTestRunner: 'jest',
+      e2eTestRunner: 'cypress',
+      template: 'blank',
+      capacitor: false,
+      skipFormat: true,
+    };
+    const projectRoot = `apps/${options.name}`;
 
-  const options: ApplicationGeneratorSchema = {
-    name: 'my-app',
-    unitTestRunner: 'jest',
-    e2eTestRunner: 'cypress',
-    template: 'blank',
-    capacitor: false,
-    skipFormat: true,
+    return {
+      host,
+      options,
+      projectRoot,
+    };
   };
 
-  const projectRoot = `apps/${options.name}`;
-
-  function testGeneratedFiles(tree: Tree, options: ApplicationGeneratorSchema) {
+  async function testGeneratedFiles(
+    tree: Tree,
+    options: ApplicationGeneratorSchema
+  ) {
+    const { projectRoot } = await setup();
     // Common files
     expect(tree.exists(`${projectRoot}/.eslintrc.json`)).toBeTruthy();
     expect(tree.exists(`${projectRoot}/src/index.html`)).toBeTruthy();
@@ -44,11 +54,8 @@ describe('application', () => {
     }
   }
 
-  beforeEach(() => {
-    host = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
-  });
-
   it('should add dependencies to package.json', async () => {
+    const { host, options } = await setup();
     await applicationGenerator(host, options);
 
     const packageJson = readJson(host, 'package.json');
@@ -58,12 +65,14 @@ describe('application', () => {
   });
 
   it('should generate application', async () => {
+    const { host, options } = await setup();
     await applicationGenerator(host, options);
 
-    testGeneratedFiles(host, { ...options });
+    await testGeneratedFiles(host, { ...options });
   });
 
   it('should delete unused @nx/react files', async () => {
+    const { host, options, projectRoot } = await setup();
     await applicationGenerator(host, options);
 
     expect(host.exists(`${projectRoot}/src/app/app.css`)).toBeFalsy();
@@ -71,6 +80,7 @@ describe('application', () => {
   });
 
   it('should update assets in project configuration', async () => {
+    const { host, options, projectRoot } = await setup();
     await applicationGenerator(host, options);
     const project = readProjectConfiguration(host, options.name);
 
@@ -84,6 +94,7 @@ describe('application', () => {
 
   describe('--template', () => {
     it('should add base template files', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, options);
 
       expect(host.exists(`${projectRoot}/ionic.config.json`)).toBeTruthy();
@@ -93,6 +104,7 @@ describe('application', () => {
     });
 
     it('should add blank template files', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, { ...options, template: 'blank' });
 
       expect(
@@ -101,6 +113,7 @@ describe('application', () => {
     });
 
     it('should add list template files', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, { ...options, template: 'list' });
 
       expect(
@@ -109,12 +122,14 @@ describe('application', () => {
     });
 
     it('should add sidemenu template files', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, { ...options, template: 'sidemenu' });
 
       expect(host.exists(`${projectRoot}/src/pages/Page.tsx`)).toBeTruthy();
     });
 
     it('should add tabs template files', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, { ...options, template: 'tabs' });
 
       expect(host.exists(`${projectRoot}/src/pages/Tab1.tsx`)).toBeTruthy();
@@ -123,6 +138,7 @@ describe('application', () => {
 
   describe('--directory', () => {
     it('should update project configuration with directory', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, { ...options, directory: 'myDir' });
       const project = readProjectConfiguration(host, `my-dir-${options.name}`);
       const projectE2e = readProjectConfiguration(
@@ -135,12 +151,14 @@ describe('application', () => {
     });
 
     it('should generate files', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, { ...options, directory: 'myDir' });
 
       expect(host.exists('apps/my-dir/my-app/src/main.ts'));
     });
 
     it('should generate Capacitor project', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, {
         ...options,
         directory: 'my-dir',
@@ -155,6 +173,7 @@ describe('application', () => {
 
   describe('--unitTestRunner', () => {
     it('none', async () => {
+      const { host, options, projectRoot } = await setup();
       await applicationGenerator(host, {
         ...options,
         unitTestRunner: 'none',
@@ -167,9 +186,10 @@ describe('application', () => {
   describe('--capacitor', () => {
     describe('true', () => {
       it('should generate Capacitor project', async () => {
+        const { host, options, projectRoot } = await setup();
         await applicationGenerator(host, { ...options, capacitor: true });
 
-        testGeneratedFiles(host, { ...options, capacitor: true });
+        await testGeneratedFiles(host, { ...options, capacitor: true });
       });
     });
   });
@@ -177,6 +197,7 @@ describe('application', () => {
   describe('--standaloneConfig', () => {
     describe('true', () => {
       it('should generate package.json', async () => {
+        const { host, options, projectRoot } = await setup();
         await applicationGenerator(host, {
           ...options,
           standaloneConfig: true,
@@ -188,6 +209,7 @@ describe('application', () => {
 
     describe('false', () => {
       it('should not generate package.json', async () => {
+        const { host, options, projectRoot } = await setup();
         await applicationGenerator(host, {
           ...options,
           standaloneConfig: false,

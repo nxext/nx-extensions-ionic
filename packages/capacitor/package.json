@@ -1,11 +1,7 @@
 {
   "name": "@nxext/capacitor",
-  "version": "18.0.4",
+  "version": "18.0.0",
   "description": "An Nx plugin for developing cross-platform applications using Capacitor",
-  "author": {
-    "name": "Devin Shoemaker",
-    "email": "devinshoe@gmail.com"
-  },
   "homepage": "https://nxext.github.io/nx-extensions-ionic/docs/capacitor/getting-started.html",
   "repository": {
     "type": "git",
@@ -22,11 +18,12 @@
   "schematics": "./generators.json",
   "builders": "./executors.json",
   "dependencies": {
-    "@nx/devkit": "18.3.1",
-    "nx": "18.3.1",
-    "@nx/web": "18.3.1",
     "ignore": "^5.3.1",
     "tslib": "^2.3.0"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "@nx/devkit": ">=18.0.0",
+    "@nx/web": ">=18.0.0",
+    "nx": ">=18.0.0"
+  }
 }
