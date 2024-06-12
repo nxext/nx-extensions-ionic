@@ -1,6 +1,6 @@
 {
   "name": "@nxext/ionic-react",
-  "version": "18.0.4",
+  "version": "19.0.0",
   "description": "An Nx plugin for developing Ionic React applications and libraries",
   "author": {
     "name": "Devin Shoemaker",
@@ -25,10 +25,10 @@
   "schematics": "./generators.json",
   "builders": "./executors.json",
   "dependencies": {
-    "@nxext/capacitor": "^18.0.4",
-    "@nx/devkit": "18.3.1",
-    "@nx/eslint": "18.3.1",
-    "@nx/react": "18.3.1",
+    "@nxext/capacitor": "^19.0.0",
+    "@nx/devkit": "19.2.3",
+    "@nx/eslint": "19.2.3",
+    "@nx/react": "19.2.3",
     "typescript": "5.4.5",
     "@phenomnomnominal/tsquery": "~5.0.1",
     "tslib": "^2.3.0"
