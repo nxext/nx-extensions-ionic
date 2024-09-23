@@ -9,7 +9,6 @@ import { addCapacitor } from './lib/add-capacitor';
 import { addDependencies } from './lib/add-dependencies';
 import { addFiles, removeFiles } from './lib/files';
 import { normalizeOptions } from './lib/normalize-options';
-import { updateEslintConfig } from './lib/update-eslint-config';
 import { updateWorkspace } from './lib/update-workspace';
 import { ApplicationGeneratorSchema } from './schema';
 
@@ -24,7 +23,6 @@ export async function applicationGenerator(
   addFiles(host, options);
   removeFiles(host, options);
   updateWorkspace(host, options);
-  updateEslintConfig(host, options);
 
   const capacitorTask = await addCapacitor(host, options);
 
