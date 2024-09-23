@@ -31,7 +31,7 @@
     "@nx/angular": "^19.0.0",
     "@nx/js": "^19.0.0",
     "@phenomnomnominal/tsquery": "~5.0.1",
-    "typescript": "5.4.5",
+    "typescript": "5.5.4",
     "tslib": "^2.3.0"
   },
   "peerDependencies": {}

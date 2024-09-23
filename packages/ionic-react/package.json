@@ -29,7 +29,7 @@
     "@nx/devkit": "^19.0.0",
     "@nx/eslint": "^19.0.0",
     "@nx/react": "^19.0.0",
-    "typescript": "5.4.5",
+    "typescript": "5.5.4",
     "@phenomnomnominal/tsquery": "~5.0.1",
     "tslib": "^2.3.0"
   },
