@@ -9,7 +9,7 @@ import {
 } from '@nx/devkit';
 import runCommands from 'nx/src/executors/run-commands/run-commands.impl';
 import { CommandExecutorSchema } from './schema';
-import { existsSync, rmSync } from 'fs';
+import { existsSync, rmSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 
 export default async function* runExecutor(
